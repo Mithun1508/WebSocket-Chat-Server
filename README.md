@@ -1,19 +1,53 @@
-# Ruby on Replit
+WebSocket Chat Server with Ruby 
 
-This is a template to get you started with Ruby on Replit. It's ready to go so you can just hit run and start coding!
+# Dependencies
+The only dependency is the EM-WebSocket library. To install it, just run:
 
-## Running the repl
+"gem install em-websocket"  
 
-Simply hit run! You can edit the run command from the `.replit` file.
+# Running the Server
 
-## Installing packages
+To run the server:
+"ruby em-ws.rb"
 
-To add packages to your repl, we recommend using the Replit packager interface in the left sidebar or using `bundle install` in the shell. Check out the [Bundle docs here](https://bundler.io/v2.3/#getting-started).
+# Message Format
+The format for a message, both to and from the client, is:
 
-**Warning: Avoid using `gem install` to add packages.**
+{
 
-Beacuse Ruby repls use [Bundle](https://bundler.io/) under the hood to provide a consistent environment that tracks and installs the exact gems and versions needed, we recommend using `bundle install` instead of `gem install`, which may not work as expected.
+    type: string;
+    
+    username: string;
+    
+    value?: any;
+    
+}
+All messages require a type and username, but only some messages will provide or require a value.
 
-## Help
+To see the types of messages the client can send, please see Accepted Message Types. For the types of messages the server will send, please see Response Types.
 
-If you need help you might be able to find an answer on our [docs](https://docs.replit.com) page. Feel free to report bugs and give us feedback [here](https://replit.com/support).
+1) Accepted Messages and its Types
+ 
+ 1)Type- Purpose
+
+2) login- Let's a user register their username, must be unique
+
+3) logout- Unregister the username
+
+4) chat	- Send a chat message
+
+
+Responses and its Types
+
+Type	Purpose
+
+login_failure	Username from a login is taken
+
+
+logged_in	Username successfully registered
+
+chat	A chat message was sent
+
+error	An unknown message type was sent
+
+All users receive the chat messages, but only the sending user will receive the other three message types.
