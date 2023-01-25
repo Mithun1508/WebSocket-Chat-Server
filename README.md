@@ -1,4 +1,4 @@
-WebSocket Chat Server with Ruby 
+# WebSocket Chat Server with Ruby 
 
 # Dependencies
 The only dependency is the EM-WebSocket library. To install it, just run:
